@@ -217,6 +217,8 @@ FullDatasetWithCluster_kproto = cbind(y_kproto,DatasetforClusteringFinal_kproto)
 FullDatasetWithCluster_kproto[,.(Count = .N), by = .(Breakfast,Cluster)]
 FullDatasetWithCluster_kproto[, .(Count = .N , AvgOrders = mean(TotalOrders), AvgAmount = mean(TotalAmount)), by = .(Cluster)]
 
+save(list = ls(.GlobalEnv), file = "efoodv2.Rdata")
+
 #### export results - Power BI dataset
 write.xlsx(x = list(DatasetCustomerLevel_kproto = FullDatasetWithCluster_kproto),file = paste0(getwd(),"/DatasetCustomerLevel_kproto.xlsx")) 
 
